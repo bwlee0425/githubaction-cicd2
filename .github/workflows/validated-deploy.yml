@@ -39,5 +39,5 @@ jobs:
             echo "Good Web" > output.txt
             cd ~/app
             git pull origin main
-            docker-compose down
-            docker-compose up --build -d
+            docker compose down
+            docker compose up --build -d
