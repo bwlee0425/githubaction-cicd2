@@ -6,4 +6,4 @@ services:
     volumes:
       - .:/app
 
-# 개발환경에서는 docker 를 생각안하는 컨셉. github 에 올려서 push되면 action 으로 ec2 에서 docker 실행하도록.
+# 개발환경에서는 docker 를 생각안하는 컨셉. github 에 올려서 push되면 action 으로 ec2 에서 docker 실행하도록. vscode .github\workflows\deployment.yml 로 실행.
