@@ -17,4 +17,29 @@ jobs:
             whoami
             pwd
             echo "Hello from EC2!"
-            echo "Hello from EC2!" > lion.txt
+            
+            echo "=== System Information ==="
+            uname -a
+            echo -e "\n=== Distribution Info ==="
+            lsb_release -a
+            echo -e "\n=== CPU Info ==="
+            cat /proc/cpuinfo | grep "model name" | head -n1
+            
+            echo "=== Disk Usage Report ===" > disk_report.txt
+            date >> disk_report.txt
+            echo -e "\nDisk Usage:" >> disk_report.txt
+            df -h >> disk_report.txt
+            echo -e "\nLargest Directories:" >> disk_report.txt
+
+            memory_info=$(free -m)
+            swap_info=$(swapon --show)
+            echo "=== Memory Status ==="
+            echo "$memory_info"
+            echo -e "\n=== Swap Status ==="
+            if [ -z "$swap_info" ]; then
+              echo "No swap space configured"
+            else
+              echo "$swap_info"
+            fi
+            du -h /home/ubuntu | sort -rh | head -n5 >> disk_report.txt
+            cat disk_report.txt
